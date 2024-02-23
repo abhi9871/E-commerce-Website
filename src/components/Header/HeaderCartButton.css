@@ -1,0 +1,7 @@
+.cart-button:hover, .cart-button:active {
+    background-color: rgb(178, 191, 203) !important;
+}
+
+.cart-count {
+    background-color: chocolate;
+}
