@@ -43,6 +43,28 @@ const Footer = () => {
             </div>
           </Col>
         </Row>
+        <Row className='mt-4 justify-content-center'>
+          <Col lg={6} md={6} sm={4} className=''>
+            <form>
+              <h5>Subscribe to our newsletter</h5>
+              <p>Monthly digest of what's new and exciting from us.</p>
+              <div className="d-flex w-100 gap-2">
+                <label for="newsletter1" className="visually-hidden">
+                  Email address
+                </label>
+                <input
+                  id="newsletter1"
+                  type="text"
+                  class="form-control"
+                  placeholder="Email address"
+                />
+                <button class="btn btn-primary" type="button">
+                  Subscribe
+                </button>
+              </div>
+            </form>
+          </Col>
+        </Row>
       </Container>
       <div className="text-center mt-4">
         <p>&copy; 2024 Apna Store. All rights reserved.</p>

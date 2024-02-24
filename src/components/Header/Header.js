@@ -3,13 +3,13 @@ import {Container, Nav, Navbar} from 'react-bootstrap';
 import HeaderCartButton from './HeaderCartButton';
 import './Header.css';
 import navbarImage from '../../assets/logo.png';
-import headerImage from '../../assets/ecommerce.jpg';
+import Slider from './Slider';
 
-const Header = () => {
+const Header = (props) => {
         return (
             <Fragment>
             <header>
-            <Navbar expand="lg" className="bg-dark">
+            <Navbar expand="lg" className="bg-dark fixed-top">
               <Container>
                 <Navbar.Brand href="#home">
                   <div className='d-flex justify-center align-items-center text-white'>
@@ -24,13 +24,11 @@ const Header = () => {
                     <Nav.Link href="#" className='text-white text-center fw-bold mx-2'>STORE</Nav.Link>
                     <Nav.Link href="#" className='text-white text-center fw-bold mx-2'>ABOUT</Nav.Link>
                   </Nav>
-                  <HeaderCartButton />
+                  <HeaderCartButton showCartOnClick = {props.onShow} />
                 </Navbar.Collapse>
               </Container>
             </Navbar>
-            <div className='main-image'>
-            <img src={headerImage} alt='Welcome to Apna Store'></img>
-            </div>
+            <Slider />
             </header>
             </Fragment>
     )
