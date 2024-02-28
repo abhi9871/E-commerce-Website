@@ -37,28 +37,28 @@ const Footer = () => {
           <Col lg={3} md={6} className='text-center'>
             <h5>Follow Us</h5>
             <div className='d-flex justify-content-evenly'>
-            <Instagram stroke='pink' stroke-width="2"/>
-            <Twitter fill='blue' stroke='blue' stroke-width="2" />
-            <Facebook stroke='blue' stroke-width="2" />
+            <Instagram stroke='pink' strokeWidth="2"/>
+            <Twitter fill='blue' stroke='blue' strokeWidth="2" />
+            <Facebook stroke='blue' strokeWidth="2" />
             </div>
           </Col>
         </Row>
         <Row className='mt-4 justify-content-center'>
-          <Col lg={6} md={6} sm={4} className=''>
+          <Col lg={6} md={6} sm={4}>
             <form>
               <h5>Subscribe to our newsletter</h5>
               <p>Monthly digest of what's new and exciting from us.</p>
               <div className="d-flex w-100 gap-2">
-                <label for="newsletter1" className="visually-hidden">
+                <label htmlFor="newsletter1" className="visually-hidden">
                   Email address
                 </label>
                 <input
                   id="newsletter1"
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   placeholder="Email address"
                 />
-                <button class="btn btn-primary" type="button">
+                <button className="btn btn-primary" type="button">
                   Subscribe
                 </button>
               </div>

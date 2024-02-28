@@ -24,7 +24,7 @@ const Header = (props) => {
                     <Nav.Link href="#" className='text-white text-center fw-bold mx-2'>STORE</Nav.Link>
                     <Nav.Link href="#" className='text-white text-center fw-bold mx-2'>ABOUT</Nav.Link>
                   </Nav>
-                  <HeaderCartButton showCartOnClick = {props.onShow} />
+                  <HeaderCartButton handleShow = {props.handleShow} />
                 </Navbar.Collapse>
               </Container>
             </Navbar>

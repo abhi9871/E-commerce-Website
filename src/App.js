@@ -1,22 +1,26 @@
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import Header from "./components/Header/Header";
 import Cart from "./components/Cart/Cart";
+import OrderPlacedCard from "./components/Order/OrderPlacedModal";
 import Category from "./components/Category/Category";
 import Footer from "./components/Footer/Footer";
+import CartProvider from "./store/CartProvider";
 
 function App() {
-  const [showCart, setShowCart] = useState(false);
+  const [show, setShow] = useState(false);
 
-  const showCartHandler = () => setShowCart(true);;
+  const handleClose = () => setShow(false);
 
-  const hideCartHandler = () => setShowCart(false);
+  const handleShow = () => setShow(true);
+
   return (
-    <Fragment>
-    {showCart && <Cart onClose = {hideCartHandler} />}
-    <Header onShow = {showCartHandler} />
+    <CartProvider>
+    <OrderPlacedCard/>
+    {show && <Cart placement='end' name='end' show = {show} onHide = {handleClose} />}
+    <Header handleShow = {handleShow} />
     <Category />
     <Footer />
-    </Fragment>
+    </CartProvider>
   );
 }
 
