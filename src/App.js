@@ -1,26 +1,32 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from "./components/Header/Header";
 import Cart from "./components/Cart/Cart";
-import OrderPlacedCard from "./components/Order/OrderPlacedModal";
 import Category from "./components/Category/Category";
 import Footer from "./components/Footer/Footer";
 import CartProvider from "./store/CartProvider";
+import HomePage from "./pages/Home/Home";
+import AboutPage from "./pages/About/About";
 
 function App() {
-  const [show, setShow] = useState(false);
+  const [showCart, setShowCart] = useState(false);
 
-  const handleClose = () => setShow(false);
+  const handleCloseCart = () => setShowCart(false);
 
-  const handleShow = () => setShow(true);
+  const handleShowCart = () => setShowCart(true);
 
   return (
+    <Router>
     <CartProvider>
-    <OrderPlacedCard/>
-    {show && <Cart placement='end' name='end' show = {show} onHide = {handleClose} />}
-    <Header handleShow = {handleShow} />
-    <Category />
+    {showCart && <Cart placement='end' name='end' show = {showCart} onHide = {handleCloseCart} />}
+    <Header handleShowCart = {handleShowCart} handleCloseCart = {handleCloseCart} />
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+    </Routes>
     <Footer />
     </CartProvider>
+    </Router>
   );
 }
 

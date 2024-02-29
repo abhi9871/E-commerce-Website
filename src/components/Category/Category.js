@@ -50,19 +50,19 @@ const Category = () => {
   }
 
   return (
-    <Container>
+    <Container className="mb-5">
         <h2 className="text-center fw-bold mt-4">Products</h2>
         <Row xs={1} md={2} lg={2} className="g-4 justify-content-center">
     {
         productsArr.map((product, index) => {
             return (
                 <Col key={index} className="d-flex align-items-center justify-content-center">
-                <Card style={{ width: "18rem" }} className="m-4 shadow-lg">
-                <Card.Title className="text-center mt-3">{product.title}</Card.Title>
+                <Card style={{ width: "18rem" }} className="mt-4 shadow-lg">
                 <Card.Body>
                     <Card.Text className="zoom-image-container"> 
                     <img src={product.imageUrl} alt={product.imageUrltitle} className="image zoom-image" />
                     </Card.Text>
+                    <Card.Title className="text-center my-3">{product.title}</Card.Title>
                     <div className="d-flex justify-content-between">
                     <span className="fw-bold fs-4"><span>&#8377;</span>{product.price}</span>
                     <Button id={product.id} variant="primary" onClick={addToCartHandler}>Add To Cart</Button>
