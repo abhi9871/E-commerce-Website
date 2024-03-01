@@ -11,20 +11,22 @@ const Header = (props) => {
             <header>
             <Navbar expand="lg" className="bg-dark fixed-top">
               <Container>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand>
+                <NavLink to = "/" className="text-decoration-none">
                   <div className='d-flex justify-center align-items-center text-white'>
                     <img src = {navbarImage} className='navbar-img' alt='Apna Store'/>
                     <h4 className='mx-2'>Apna Store</h4>
                   </div>
+                  </NavLink>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className='toggle-icon' />
                 <Navbar.Collapse id="basic-navbar-nav">
                   <Nav className="m-auto">
                     <NavLink to="/" className='text-decoration-none text-white text-center fw-bold mx-2'>HOME</NavLink>
-                    <NavLink to="/store" className='text-decoration-none text-white text-center fw-bold mx-2'>STORE</NavLink>
+                    <NavLink to="/shop" className='text-decoration-none text-white text-center fw-bold mx-2'>SHOP</NavLink>
                     <NavLink to="/about" className='text-decoration-none text-white text-center fw-bold mx-2'>ABOUT</NavLink>
                   </Nav>
-                  <HeaderCartButton handleShow = {props.handleShow} />
+                  <HeaderCartButton handleShowCart = {props.handleShowCart} />
                 </Navbar.Collapse>
               </Container>
             </Navbar>

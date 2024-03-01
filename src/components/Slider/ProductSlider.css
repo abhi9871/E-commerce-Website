@@ -10,3 +10,11 @@
   .zoom-image:hover {
     transform: scale(1.2); /* Adjust the scale factor for the desired zoom level */
   }
+
+  /* Add this to your ProductSlider.css file or your stylesheet */
+@media (max-width: 280px) {
+    .card-width {
+        width: 15rem !important;
+    }
+  }
+  

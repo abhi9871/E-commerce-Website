@@ -1,5 +1,5 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import ApnaStoreLogo from '../../assets/logo.png';
 import './About.css';
 
@@ -28,13 +28,13 @@ const AboutPage = () => {
           <p>
             Explore our website to discover the latest trends in fashion, cutting-edge electronics, and stylish home essentials. We are committed to making your online shopping journey enjoyable and convenient.
           </p>
-          {/* <Link to="/shop"> */}
+          <NavLink to="/shop" className="text-decoration-none">
             <div className='mt-3 text-center'>
             <Button variant="primary" className="mt-3">
               Explore Our Products
             </Button>
             </div>
-          {/* </Link> */}
+          </NavLink>
         </Col>
         </Row>
     </Container>

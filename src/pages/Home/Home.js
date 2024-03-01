@@ -1,12 +1,15 @@
 import { Fragment } from 'react';
-import Slider from '../../components/Slider/Slider';
-import Category from '../../components/Category/Category';
+import offerImage from '../../assets/offer_image.jpg';
+import ProductSlider from '../../components/Slider/ProductSlider';
+import './Home.css';
 
 const HomePage = () => {
     return (
         <Fragment>
-            <Slider />
-            <Category />
+            <div>
+              <img src={offerImage} alt='Limited_Offer' className='offer-img'/>  
+            </div>
+            <ProductSlider />
         </Fragment>
     )
 }

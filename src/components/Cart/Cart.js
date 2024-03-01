@@ -1,11 +1,13 @@
 import { useState, useEffect, Fragment, useContext } from "react";
-import { Offcanvas, Card, Button, Image, Table } from "react-bootstrap";
+import { Card, Button, Image, Table, Container } from "react-bootstrap";
+import { ShoppingCart } from "react-feather";
+import { NavLink } from "react-router-dom";
 import OrderPlacedModal from "../Order/OrderPlacedModal";
 import Loader from "../Loader/Loader";
 import CartContext from "../../store/cart-context";
 import "./Cart.css";
 
-const Cart = (props) => {
+const CartPage = () => {
   const cartCtx = useContext(CartContext);
   const [isMsgShown, setIsMsgShown] = useState(false);
   const [showOrderPlaced, setShowOrderPlaced] = useState(false);
@@ -43,26 +45,27 @@ const Cart = (props) => {
 
   return (
     <Fragment>
-      <Offcanvas {...props}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title className="text-center">
+        <Container className="cart-btn">
+          <div className="h4 mb-4 text-center">
             Shopping Cart
-          </Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
+          </div>
+        <div>
           {isLoading ? (
             <Loader className="m-auto" />
           ) : isMsgShown ? (
             <Card className="m-auto">
               <Card.Body className="text-center fw-bold">
-                <p>Your cart is empty..😢</p>
+                <ShoppingCart  className="text-dark" size={150} />
+                <p className="mt-4">Your cart is empty..😢</p>
                 <div className="d-flex justify-content-center">
-                  <button className="button rounded-pill px-4 fw-bold ms-1">
+                <NavLink to='/shop' className="text-decoration-none">
+                  <button className="button rounded-pill px-4 fw-bold mx-1 my-2">
                     Shop now
                     <svg class="cartIcon" viewBox="0 0 576 512">
                       <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path>
                     </svg>
                   </button>
+                  </NavLink>
                 </div>
               </Card.Body>
             </Card>
@@ -82,18 +85,17 @@ const Cart = (props) => {
                     (product) =>
                       product.quantity > 0 && (
                         <tr key={product.id}>
-                          <td>
+                          <td className="text-center">
                             <Image
                               src={product.imageUrl}
                               alt={product.title}
                               thumbnail
-                              className="me-3"
                             />
                           </td>
                           <td className="text-center">{product.title}</td>
                           <td className="text-center">${product.price}</td>
                           <td className="text-center">
-                            <div className="d-flex align-items-center">
+                            <div className="d-flex align-items-center justify-content-center">
                               <Button
                                 id={product.id}
                                 className="cart-btn m-1 bg-transparent border-none border-danger-subtle text-danger fw-bold"
@@ -111,7 +113,7 @@ const Cart = (props) => {
                               </span>
                               <Button
                                 id={product.id}
-                                className="cart-btn bg-transparent border-none border-danger-subtle text-danger fw-bold"
+                                className="cart-btn m-1 bg-transparent border-none border-danger-subtle text-danger fw-bold"
                                 style={{ fontSize: "0.8rem" }}
                                 onClick={addItemHandler}
                                 size="sm"
@@ -155,11 +157,11 @@ const Cart = (props) => {
               </Table>
             </>
           )}
-        </Offcanvas.Body>
-      </Offcanvas>
+        </div>
       {showOrderPlaced && <OrderPlacedModal show={showOrderPlacedHandler} hide={hideOrderPlacedHandler} />}
+      </Container>
     </Fragment>
   );
 };
 
-export default Cart;
+export default CartPage;

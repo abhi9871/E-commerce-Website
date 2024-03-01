@@ -59,14 +59,14 @@ const Category = () => {
                 <Col key={index} className="d-flex align-items-center justify-content-center">
                 <Card style={{ width: "18rem" }} className="mt-4 shadow-lg">
                 <Card.Body>
-                    <Card.Text className="zoom-image-container"> 
-                    <img src={product.imageUrl} alt={product.imageUrltitle} className="image zoom-image" />
-                    </Card.Text>
+                    <div className="zoom-image-container"> 
+                    <Card.Img variant="top" src={product.imageUrl} className="zoom-image" />
+                    </div>
                     <Card.Title className="text-center my-3">{product.title}</Card.Title>
-                    <div className="d-flex justify-content-between">
+                    <Card.Text className="d-flex justify-content-between">
                     <span className="fw-bold fs-4"><span>&#8377;</span>{product.price}</span>
                     <Button id={product.id} variant="primary" onClick={addToCartHandler}>Add To Cart</Button>
-                    </div>
+                    </Card.Text>
                 </Card.Body>
                 </Card>
                 </Col>
