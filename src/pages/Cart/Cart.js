@@ -2,8 +2,8 @@ import { useState, useEffect, Fragment, useContext } from "react";
 import { Card, Button, Image, Table, Container } from "react-bootstrap";
 import { ShoppingCart } from "react-feather";
 import { NavLink } from "react-router-dom";
-import OrderPlacedModal from "../Order/OrderPlacedModal";
-import Loader from "../Loader/Loader";
+import OrderPlacedModal from "../../components/Order/OrderPlacedModal";
+import Loader from "../../components/Loader/Loader";
 import CartContext from "../../store/cart-context";
 import "./Cart.css";
 
