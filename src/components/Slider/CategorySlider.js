@@ -1,11 +1,15 @@
 import React from "react";
 import Slider from "react-slick";
 import { Container, Card } from "react-bootstrap";
+import electronics from '../../assets/electronics.png';
+import jewellery from '../../assets/jewellery.png';
+import mensClothing from '../../assets/mens_clothing.png';
+import womensClothing from '../../assets/womens_clothing.png';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./ProductSlider.css";
+import "./CategorySlider.css";
 
-const ProductSlider = () => {
+const CategorySlider = () => {
       
   const settings = {
     infinite: true,
@@ -53,54 +57,45 @@ const ProductSlider = () => {
   };  
   
 
-  const productsArr = [
+  const categories = [
     {
       id: 1,
-      title: "Colors",
-      price: 100,
-      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-      quantity: 1,
+      title: "Electronics",
+      imageUrl: electronics,
     },
   
     {
       id: 2,
-      title: "Black and white Colors",
-      price: 50,
-      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-      quantity: 1,
+      title: "Jewellery",
+      imageUrl: jewellery,
     },
   
     {
       id: 3,
-      title: "Yellow and Black Colors",
-      price: 70,
-      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-      quantity: 1,
+      title: "Men's Clothing",
+      imageUrl: mensClothing,
     },
   
     {
       id: 4,
-      title: "Blue Color",
-      price: 100,
-      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
-      quantity: 1,
+      title: "Women's Clothing",
+      imageUrl: womensClothing,
     },
   ];
   
   return (
     <Container>
-      <h2 className="text-center fw-bold my-4">Products</h2>
+      <h2 className="text-center fw-bold my-4">Categories</h2>
     <div className="slider-container">
       <Slider {...settings}>
-        {productsArr.map((product) => (
-          <div key={product.id}>
+        {categories.map((category) => (
+          <div key={category.id}>
             <Card style={{ width: "18rem" }} className="card-width p-2 my-4 m-auto shadow-lg">
               <div className="zoom-image-container">
-              <Card.Img variant="top" src={product.imageUrl} className="zoom-image" />
+              <Card.Img variant="top" src={category.imageUrl} className="zoom-image" height={220} />
               </div>
               <Card.Body className="text-center">
-                <Card.Title>{product.title}</Card.Title>
-                 <Card.Text><span className="fw-bold fs-4"><span>&#8377;</span>{product.price}</span></Card.Text>
+                <Card.Title>{category.title}</Card.Title>
               </Card.Body>
             </Card>
           </div>
@@ -111,4 +106,4 @@ const ProductSlider = () => {
   );
 }
 
-export default ProductSlider;
+export default CategorySlider;

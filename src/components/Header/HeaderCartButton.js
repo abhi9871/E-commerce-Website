@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import CartContext from "../../store/cart-context";
 import "./HeaderCartButton.css";
 
-const HeaderCartButton = ({ handleShowCart }) => {
+const HeaderCartButton = () => {
   const cartCtx = useContext(CartContext);
   const numOfCartItems = cartCtx.items.reduce(
     (curr, product) => curr + product.quantity,

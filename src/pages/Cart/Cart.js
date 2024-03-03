@@ -87,8 +87,9 @@ const CartPage = () => {
                         <tr key={product.id}>
                           <td className="text-center">
                             <Image
-                              src={product.imageUrl}
+                              src={product.image}
                               alt={product.title}
+                              className="product-image"
                               thumbnail
                             />
                           </td>

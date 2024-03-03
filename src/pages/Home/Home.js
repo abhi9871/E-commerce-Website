@@ -1,15 +1,18 @@
 import { Fragment } from 'react';
-import offerImage from '../../assets/offer_image.jpg';
-import ProductSlider from '../../components/Slider/ProductSlider';
+import sliderImage1 from '../../assets/online_store1.jpg';
+import sliderImage2 from '../../assets/online_store2.jpg';
+import sliderImage3 from '../../assets/online_store3.jpg';
+import Slider from '../../components/Slider/Slider';
+import CategorySlider from '../../components/Slider/CategorySlider';
 import './Home.css';
+
+const sliderArr = [sliderImage1, sliderImage2, sliderImage3];
 
 const HomePage = () => {
     return (
         <Fragment>
-            <div>
-              <img src={offerImage} alt='Limited_Offer' className='offer-img'/>  
-            </div>
-            <ProductSlider />
+            <Slider slides = {sliderArr} />
+            <CategorySlider />
         </Fragment>
     )
 }

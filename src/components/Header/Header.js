@@ -27,7 +27,7 @@ const Header = (props) => {
                     <NavLink to="/about" className='text-decoration-none text-white text-center fw-bold mx-3 mb-2'>ABOUT</NavLink>
                     <NavLink to="/contact-us" className='text-decoration-none text-white text-center fw-bold mx-3 mb-2'>CONTACT US</NavLink>
                   </Nav>
-                  <HeaderCartButton handleShowCart = {props.handleShowCart} />
+                  <HeaderCartButton />
                 </Navbar.Collapse>
               </Container>
             </Navbar>

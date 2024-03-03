@@ -8,7 +8,7 @@ const CartProvider = (props) => {
         setProducts((prevProducts) => {
             const existingIndex = prevProducts.findIndex((item) => item.id === product.id);
             if(existingIndex === -1)
-                return [...prevProducts, product];
+                return [...prevProducts, {...product, quantity: 1}];
             else{
                     return prevProducts.map((item, index) =>
                       index === existingIndex ? { ...item, quantity: item.quantity + 1 } : item
