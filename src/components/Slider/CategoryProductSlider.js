@@ -62,7 +62,7 @@ const CategoryProductSlider = (props) => {
         <Slider {...settings}>
           {props.categorizedProducts.map((category) => (
             <div key={category.id} className="card-container">
-            <NavLink to={`/product/${category.id}`} className="text-decoration-none">
+            <NavLink to={`/products/${category.id}`} className="text-decoration-none">
               <Card
                 id={category.id}
                 style={{ width: "18rem" }}

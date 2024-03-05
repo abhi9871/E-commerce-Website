@@ -35,7 +35,7 @@ const OrderPlacedModal = ({ show, hide }) => {
           </p>
         </div>
         <div class="actions">
-          <NavLink to="/shop" className="text-decoration-none">
+          <NavLink to="/products" className="text-decoration-none">
             <button type="button" className="shop" onClick={hide}>
               Back To Shop
             </button>

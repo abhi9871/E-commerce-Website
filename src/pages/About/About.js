@@ -28,7 +28,7 @@ const AboutPage = () => {
           <p>
             Explore our website to discover the latest trends in fashion, cutting-edge electronics, and stylish home essentials. We are committed to making your online shopping journey enjoyable and convenient.
           </p>
-          <NavLink to="/shop" className="text-decoration-none">
+          <NavLink to="/products" className="text-decoration-none">
             <div className='mt-3 text-center'>
             <Button variant="primary" className="mt-3">
               Explore Our Products

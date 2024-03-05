@@ -58,7 +58,7 @@ const CartPage = () => {
                 <ShoppingCart  className="text-dark" size={150} />
                 <p className="mt-4">Your cart is empty..😢</p>
                 <div className="d-flex justify-content-center">
-                <NavLink to='/shop' className="text-decoration-none">
+                <NavLink to='/products' className="text-decoration-none">
                   <button className="button rounded-pill px-4 fw-bold mx-1 my-2">
                     Shop now
                     <svg class="cartIcon" viewBox="0 0 576 512">

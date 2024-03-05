@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import { Container, Card } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import electronics from '../../assets/electronics.png';
 import jewellery from '../../assets/jewellery.png';
 import mensClothing from '../../assets/mens_clothing.png';
@@ -60,25 +61,25 @@ const CategorySlider = () => {
   const categories = [
     {
       id: 1,
-      title: "Electronics",
+      title: "electronics",
       imageUrl: electronics,
     },
   
     {
       id: 2,
-      title: "Jewellery",
+      title: "jewelery",
       imageUrl: jewellery,
     },
   
     {
       id: 3,
-      title: "Men's Clothing",
+      title: "men's clothing",
       imageUrl: mensClothing,
     },
   
     {
       id: 4,
-      title: "Women's Clothing",
+      title: "women's clothing",
       imageUrl: womensClothing,
     },
   ];
@@ -90,14 +91,16 @@ const CategorySlider = () => {
       <Slider {...settings}>
         {categories.map((category) => (
           <div key={category.id}>
+            <NavLink to={`/products/categories/${category.title}`} className="text-decoration-none">
             <Card style={{ width: "18rem" }} className="card-width p-2 my-4 m-auto shadow-lg">
               <div className="zoom-image-container">
               <Card.Img variant="top" src={category.imageUrl} className="zoom-image" height={220} />
               </div>
               <Card.Body className="text-center">
-                <Card.Title>{category.title}</Card.Title>
+                <Card.Title>{category.title[0].toUpperCase() + category.title.substring(1)}</Card.Title>
               </Card.Body>
             </Card>
+            </NavLink>
           </div>
         ))}
       </Slider>

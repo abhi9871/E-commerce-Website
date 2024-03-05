@@ -1,4 +1,5 @@
 import { useState, useEffect, Fragment } from "react";
+import { useParams, Route } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Loader from "../../components/Loader/Loader";
 import CategoryProductSlider from "../../components/Slider/CategoryProductSlider";
@@ -7,10 +8,11 @@ import {
   fetchSpecificCategory,
 } from "../../services/categoryApi";
 
-const ProductPage = () => {
+const Products = () => {
+  const { categoryName } = useParams();
   const [categories, setCategories] = useState([]);
   const [categoryWiseProduct, setCategoryWiseProduct] = useState([]);
-  const [categoryName, setCategoryName] = useState("");
+  const [productCategoryName, setProductCategoryName] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchCategory = async () => {
@@ -24,11 +26,11 @@ const ProductPage = () => {
 
   const fetchCategoryProduct = async (e) => {
     try {
-      const categoryName = e?.target?.value || "electronics";
+      const name = e?.target?.value || categoryName || "electronics";;
       setIsLoading(true);
-      const fetchCategory = await fetchSpecificCategory(categoryName);
+      const fetchCategory = await fetchSpecificCategory(name);
       setCategoryWiseProduct(fetchCategory);
-      setCategoryName(categoryName);
+      setProductCategoryName(name);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -67,11 +69,11 @@ const ProductPage = () => {
         <CategoryProductSlider
           categorizedProducts={categoryWiseProduct}
           categories={categories}
-          categoryName={categoryName}
+          categoryName={productCategoryName}
         />
       )}
     </Fragment>
   );
 };
 
-export default ProductPage;
+export default Products;

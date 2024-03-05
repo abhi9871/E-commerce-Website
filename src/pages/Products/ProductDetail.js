@@ -11,21 +11,20 @@ const ProductDetail = () => {
   const { productId } = useParams();
 
   const [showOrderPlaced, setShowOrderPlaced] = useState(false);
-  const [productDetail, setProductDetail] = useState([]);
-
-  const productDetailHandler = async () => {
-    try {
-      const product = await fetchProductDetail(productId);
-      setProductDetail(product);
-      console.log(product);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [productDetail, setProductDetail] = useState({});
 
   useEffect(() => {
-    productDetailHandler();
-  }, []);
+    const productHandler = async (productId) => {
+      try {
+        const product = await fetchProductDetail(productId);
+        setProductDetail(product);
+        console.log(product);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    productHandler(productId);
+  }, [productId]);
 
   const cartCtx = useContext(CartContext);
   let product;
@@ -92,13 +91,21 @@ const ProductDetail = () => {
             <div>
               <h3>{productDetail.title}</h3>
               <h4 className="my-4">Price: &#8377;{productDetail.price}</h4>
-              {/* <div className="d-flex align-items-center mb-4">
-            <div className="d-flex align-items-center py-1 px-2 bg-success rounded-5 text-white fs-5 fw-bold">
-                <span>{productDetail.rating.rate}</span>
-                <span className="ms-1"><Star color='white' fill="white" size={22} /></span>
+              <div className="d-flex align-items-center mb-4">
+              {productDetail.rating && productDetail.rating.rate && (
+                <div className="d-flex align-items-center py-1 px-2 bg-success rounded-5 text-white fs-5 fw-bold">
+                  <span>{productDetail.rating.rate}</span>
+                  <span className="ms-1">
+                    <Star color='white' fill="white" size={22} />
+                  </span>
+                </div>
+              )}
+              {productDetail.rating && productDetail.rating.count && (
+                <span className="ms-2 text-secondary fs-6">
+                  {productDetail.rating.count} Reviews
+                </span>
+              )}
             </div>
-            <span className="ms-2 text-secondary fs-6">{productDetail.rating.count} Reviews</span>
-            </div> */}
               <p>{productDetail.description}</p>
               <h5>Available offers</h5>
               <p>
