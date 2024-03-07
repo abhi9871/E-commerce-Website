@@ -1,5 +1,5 @@
 import { useState, useEffect, Fragment } from "react";
-import { useParams, Route } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Loader from "../../components/Loader/Loader";
 import CategoryProductSlider from "../../components/Slider/CategoryProductSlider";

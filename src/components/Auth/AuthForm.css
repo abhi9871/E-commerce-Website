@@ -1,0 +1,13 @@
+.auth-form {
+    margin-top: 6rem !important;
+}
+
+.transparent-button {
+    background-color: transparent !important;
+    color: #007bff !important; /* Optional: Set a color for the button text */
+}
+
+.transparent-button:hover {
+    color:#007bff !important;
+}
+  
