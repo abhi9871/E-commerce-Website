@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
-import axios from "axios";
-import { useNavigate, redirect } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import AuthContext from "../../store/auth-context";
 import "./AuthForm.css";
@@ -134,7 +133,6 @@ const AuthPage = () => {
               {isLogin ? "Create new account" : "Login with existing account"}
             </Button>
             </div>
-            
           </Form>
         </Col>
       </Row>

@@ -1,14 +1,11 @@
-import { Fragment, useContext } from 'react';
+import { Fragment } from 'react';
 import {Container, Nav, Navbar} from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import HeaderCartButton from './HeaderCartButton';
-import AuthContext from '../../store/auth-context';
 import './Header.css';
 import navbarImage from '../../assets/logo.png';
 
 const Header = () => {
-    const authCtx = useContext(AuthContext);
-    const isLoggedIn = authCtx.isLoggedIn;
         return (
             <Fragment>
             <header>
@@ -29,7 +26,7 @@ const Header = () => {
                     <NavLink to="/products" className='text-decoration-none text-white text-center fw-bold mx-3 mb-2'>PRODUCTS</NavLink>
                     <NavLink to="/about" className='text-decoration-none text-white text-center fw-bold mx-3 mb-2'>ABOUT</NavLink>
                     <NavLink to="/contact-us" className='text-decoration-none text-white text-center fw-bold mx-3 mb-2'>CONTACT US</NavLink>
-                    <NavLink to="/auth" className='text-decoration-none text-white text-center fw-bold mx-3 mb-2'>LOGIN</NavLink>
+                    <NavLink to="/login" className='text-decoration-none text-white text-center fw-bold mx-3 mb-2'>LOGIN</NavLink>
                   </Nav>
                   <HeaderCartButton />
                 </Navbar.Collapse>

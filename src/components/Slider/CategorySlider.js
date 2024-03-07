@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useContext} from "react";
 import Slider from "react-slick";
 import { Container, Card } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../../store/auth-context";
 import electronics from '../../assets/electronics.png';
 import jewellery from '../../assets/jewellery.png';
 import mensClothing from '../../assets/mens_clothing.png';
@@ -11,6 +12,10 @@ import "slick-carousel/slick/slick-theme.css";
 import "./CategorySlider.css";
 
 const CategorySlider = () => {
+
+  const authCtx = useContext(AuthContext);
+
+  const isLoggedIn = authCtx.isLoggedIn;
       
   const settings = {
     infinite: true,
@@ -91,7 +96,7 @@ const CategorySlider = () => {
       <Slider {...settings}>
         {categories.map((category) => (
           <div key={category.id}>
-            <NavLink to={`/products/categories/${category.title}`} className="text-decoration-none">
+            <NavLink to={isLoggedIn ? `/products/categories/${category.title}` : "/login"} className="text-decoration-none">
             <Card style={{ width: "18rem" }} className="card-width p-2 my-4 m-auto shadow-lg">
               <div className="zoom-image-container">
               <Card.Img variant="top" src={category.imageUrl} className="zoom-image" height={220} />
