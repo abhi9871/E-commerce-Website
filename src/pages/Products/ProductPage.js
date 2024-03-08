@@ -1,5 +1,5 @@
 import { useState, useEffect, Fragment } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import Loader from "../../components/Loader/Loader";
 import CategoryProductSlider from "../../components/Slider/CategoryProductSlider";
@@ -10,6 +10,7 @@ import {
 
 const Products = () => {
   const { categoryName } = useParams();
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [categoryWiseProduct, setCategoryWiseProduct] = useState([]);
   const [productCategoryName, setProductCategoryName] = useState("");
@@ -26,7 +27,8 @@ const Products = () => {
 
   const fetchCategoryProduct = async (e) => {
     try {
-      const name = e?.target?.value || categoryName || "electronics";;
+      const name = e?.target?.value || categoryName || "electronics";
+      navigate(`/products/categories/${name}`);
       setIsLoading(true);
       const fetchCategory = await fetchSpecificCategory(name);
       setCategoryWiseProduct(fetchCategory);

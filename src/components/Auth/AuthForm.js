@@ -6,7 +6,10 @@ import "./AuthForm.css";
 
 const AuthPage = () => {
   const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
+
   const navigate = useNavigate();
+
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -57,7 +60,12 @@ const AuthPage = () => {
         setIsLoading(false);
 
         if(response.ok){
-            authCtx.login(data.idToken);
+            if(data.registered){
+                authCtx.login(data.idToken);
+                alert('Log in successfully');
+            } else {
+                alert('Sign up successfully');
+            }
             setEmail('');
             setPassword('');
           }
@@ -70,7 +78,7 @@ const AuthPage = () => {
           }
 
         // Redirect to "/products" after a successful login
-        navigate("/products");
+        navigate(isLogin ? "/products" : "/signup");
 
      } catch (error) {
         setIsLoading(false);
@@ -128,7 +136,10 @@ const AuthPage = () => {
             <div className="text-center mt-4">
             <Button
               className="transparent-button border-0"
-              onClick={switchAuthModeHandler}
+              onClick={() => {
+                switchAuthModeHandler();
+                navigate(isLogin ? "/signup" : "/login");
+              }}      
             >
               {isLogin ? "Create new account" : "Login with existing account"}
             </Button>

@@ -17,6 +17,8 @@ function App() {
         <Header />
         <Routes>
           <Route path='/login' element={<AuthPage />} />
+          <Route path='/signup' element={<AuthPage />} />
+          <Route path='/logout' element={<AuthPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductPage />} />
           <Route path="/products/categories/:categoryName" element={<ProductPage />} />

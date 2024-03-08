@@ -1,14 +1,19 @@
 import { useState, useEffect, Fragment, useContext } from "react";
 import { Card, Button, Image, Table, Container } from "react-bootstrap";
 import { ShoppingCart } from "react-feather";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import OrderPlacedModal from "../../components/Order/OrderPlacedModal";
 import Loader from "../../components/Loader/Loader";
+import AuthContext from "../../store/auth-context";
 import CartContext from "../../store/cart-context";
 import "./Cart.css";
 
 const CartPage = () => {
   const cartCtx = useContext(CartContext);
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
+  const navigate = useNavigate();
+
   const [isMsgShown, setIsMsgShown] = useState(false);
   const [showOrderPlaced, setShowOrderPlaced] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -37,6 +42,12 @@ const CartPage = () => {
     const product = cartCtx.items.find((item) => item.id === itemId);
     cartCtx.addProduct(product);
   };
+
+  useEffect(() => {
+    if(!isLoggedIn){
+      navigate('/login');
+    }
+  },[isLoggedIn, navigate])
 
   useEffect(() => {
     // Check if all items are removed
