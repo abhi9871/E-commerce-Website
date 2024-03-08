@@ -1,14 +1,9 @@
-import { useContext } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import AuthContext from '../../store/auth-context';
 import ApnaStoreLogo from '../../assets/logo.png';
 import './About.css';
 
 const AboutPage = () => {
-  const authCtx = useContext(AuthContext);
-  const isLoggedIn = authCtx.isLoggedIn;
-  
   return (
     <div className="about-page">
       <div className="background-overlay">
@@ -32,7 +27,7 @@ const AboutPage = () => {
           <p>
             Explore our website to discover the latest trends in fashion, cutting-edge electronics, and stylish home essentials. We are committed to making your online shopping journey enjoyable and convenient.
           </p>
-          <NavLink to={isLoggedIn ? "/products" : "/login"} className="text-decoration-none">
+          <NavLink to="/products" className="text-decoration-none">
             <div className='mt-3 text-center'>
             <Button variant="primary" className="mt-3">
               Explore Our Products

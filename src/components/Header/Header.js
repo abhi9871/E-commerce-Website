@@ -36,12 +36,14 @@ const Header = () => {
                     <NavLink to="/products" className='text-decoration-none text-white text-center fw-bold mx-3 mb-2'>PRODUCTS</NavLink>
                     <NavLink to="/about" className='text-decoration-none text-white text-center fw-bold mx-3 mb-2'>ABOUT</NavLink>
                     <NavLink to="/contact-us" className='text-decoration-none text-white text-center fw-bold mx-3 mb-2'>CONTACT US</NavLink>
-                    {!isLoggedIn && <NavLink to="/login" className='text-decoration-none text-white text-center fw-bold mx-3 mb-2'>LOGIN</NavLink>}
+                  </Nav>
+                  <HeaderCartButton />
+                  <div className='text-center'>
+                  {!isLoggedIn && <NavLink to="/login" className='text-decoration-none text-white text-center fw-bold mx-3 mb-2'>LOGIN</NavLink>}
                     {isLoggedIn && (
                     <button onClick={logoutHandler} className='btn text-decoration-none text-white text-center fw-bold mx-3 mb-2'>LOGOUT</button>
                 )}
-                  </Nav>
-                  <HeaderCartButton />
+                </div>
                 </Navbar.Collapse>
               </Container>
             </Navbar>

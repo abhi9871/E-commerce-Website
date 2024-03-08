@@ -1,13 +1,18 @@
 import { useState, useEffect, useContext, Fragment } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Container, Button, Row, Col, Image } from "react-bootstrap";
 import { Star } from "react-feather";
+import AuthContext from "../../store/auth-context";
 import CartContext from "../../store/cart-context";
 import OrderPlacedModal from "../../components/Order/OrderPlacedModal";
 import { fetchProductDetail } from "../../services/productApi";
 import "./ProductDetail.css";
 
 const ProductDetail = () => {
+  const authCtx = useContext(AuthContext);
+  const isLoggedIn = authCtx.isLoggedIn;
+  const navigate = useNavigate();
+
   const { productId } = useParams();
 
   const [showOrderPlaced, setShowOrderPlaced] = useState(false);
@@ -29,16 +34,24 @@ const ProductDetail = () => {
   const cartCtx = useContext(CartContext);
   let product;
   const addToCartHandler = (e) => {
+    if(isLoggedIn){
     let productId = parseInt(e.target.id);
     product = cartCtx.items.find((item) => item.id === productId);
     if (!product) {
       product = productDetail;
     }
     return cartCtx.addProduct(product);
+  } else{
+    navigate("/login");
+  }
   };
 
   const showOrderPlacedHandler = () => {
-    setShowOrderPlaced(true);
+    if(isLoggedIn){
+        setShowOrderPlaced(true);
+    } else {
+      navigate("/login");
+    }
   };
 
   const hideOrderPlacedHandler = () => {
